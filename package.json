@@ -1,0 +1,43 @@
+{
+  "name": "curso-cypress-avancado",
+  "version": "1.0.0",
+  "description": "https://www.udemy.com/course/testes-automatizados-com-cypress-avancado",
+  "main": "index.js",
+  "scripts": {
+    "lint": "npx standard",
+    "lint:fix": "npx standard --fix",
+    "test": "cypress run",
+    "cy:open": "cypress open"
+  },
+  "standard": {
+    "globals": [
+      "beforeEach",
+      "context",
+      "cy",
+      "Cypress",
+      "describe",
+      "it"
+    ]
+  },
+  "keywords": [
+    "cypress",
+    "cypress.io",
+    "testing"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DinoSaulo/curso-cypress-avancado.git"
+  },
+  "author": "DinoSaulo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DinoSaulo/curso-cypress-avancado/issues"
+  },
+  "homepage": "https://github.com/DinoSaulo/curso-cypress-avancado#readme",
+  "devDependencies": {
+    "cypress": "^6.6.0",
+    "cypress-localstorage-commands": "^1.4.1",
+    "faker": "^5.4.0",
+    "standardjs": "^1.0.0-alpha"
+  }
+}
