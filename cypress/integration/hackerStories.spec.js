@@ -41,7 +41,7 @@ describe('Hacker Stories', () => {
             cy.get('.item').should('have.length', 40)
         })
 
-        it.only('searches via the last searched term', () => {
+        it('searches via the last searched term', () => {
 
             cy.intercept(
                 'GET',
@@ -245,7 +245,7 @@ describe('Hacker Stories', () => {
                 })
             })
 
-            context.only('Search', () => {
+            context('Search', () => {
                 beforeEach(() => {
                     cy.intercept(
                         'GET',
@@ -287,7 +287,7 @@ describe('Hacker Stories', () => {
                         .should('be.visible')
                 })
 
-                it.only('types and clicks the submit button', () => {
+                it('types and clicks the submit button', () => {
                     cy.get('#search')
                         .should('be.visible')
                         .type(newTerm)
@@ -387,3 +387,22 @@ context.skip('Errors', () => {
         cy.get('p:contains(Something went wrong ...)').should('be.visible')
     })
 })
+
+it('shows a "Loading ..." state before showing the results', () => {
+
+    cy.intercept(
+        'GET',
+        '**/search**',
+        {
+            delay: 1000,
+            fixture: 'stories'
+        }
+    ).as('getDelayedStories')
+
+    cy.visit('/')
+
+    cy.assertLoadingIsShownAndHidden()
+    cy.wait('@getDelayedStories')
+
+    cy.get('.item').should('have.length', 2)
+  })
